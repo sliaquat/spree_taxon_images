@@ -1,0 +1,24 @@
+<% content_for :page_title do %>
+    Taxon Images for "<%= @taxon.permalink %>"
+<% end %>
+
+<%= form_for [:admin, @taxon, @taxon_image], html: {multipart: true} do |f| %>
+
+    <div data-hook="admin_image_form_fields" class="row">
+      <%= f.field_container :icon, class: ['form-group'] do %>
+          <%= f.label :attachment, Spree.t(:filename) %>
+          <%= f.file_field :attachment %>
+      <% end %>
+      <br/>
+      <%= f.field_container :description, class: ['form-group'] do %>
+          <%= f.label :alt, Spree.t(:alt_text) %>
+          <%= f.text_area :alt, :rows => 4, :class => 'form-control' %>
+      <% end %>
+    </div>
+    <%= f.hidden_field :taxon_id, :value => @taxon.id %>
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.save'), 'save' %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), admin_taxon_taxon_images_url(@taxon.id), icon: 'remove', id: 'cancel_link' %>
+    </div>
+<% end %>

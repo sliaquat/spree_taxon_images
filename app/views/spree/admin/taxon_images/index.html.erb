@@ -1,0 +1,39 @@
+<% content_for :page_title do %>
+    Taxon Images for "<%= @taxon.permalink %>"
+<% end %>
+
+<% content_for :page_actions do %>
+    <%= button_link_to Spree.t(:add_an_image), new_admin_taxon_taxon_image_url(@taxon.id), {class: "btn-success", icon: 'plus', id: 'new_taxon_image_link'} %>
+<% end %>
+
+<% unless @taxon.taxon_images.any? %>
+    <div class="alert alert-warning">
+      <h1><%= Spree.t(:no_images_found) %></h1>
+    </div>
+<% else %>
+
+    <table class="table" data-hook="images_table">
+      <thead>
+      <tr data-hook="images_header">
+        <th ><%= Spree.t(:thumbnail) %></th>
+        <th><%= Spree.t(:alt_text) %></th>
+        <th class="actions"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% (@taxon.taxon_images).each do |image| %>
+          <tr id="<%= spree_dom_id image %>" data-hook="images_row">
+
+            <td class="image">
+              <%= link_to image_tag(image.attachment.url(:mini), class: 'thumbnail'), image.attachment.url(:medium) %>
+            </td>
+            <td><%= image.alt %></td>
+            <td class="actions actions-2">
+              <%= link_to_delete image, {url: admin_taxon_taxon_image_url(@taxon, image), no_text: true} %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
