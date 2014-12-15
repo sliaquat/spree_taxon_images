@@ -3,6 +3,7 @@ class Spree::Admin::TaxonImagesController < Spree::Admin::ResourceController
 
   def index
     @taxon = Spree::Taxon.find(params[:taxon_id])
+    @taxonomy = @taxon.taxonomy
   end
 
   def new
