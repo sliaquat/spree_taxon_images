@@ -3,12 +3,8 @@ Spree::Core::Engine.add_routes do
 
 
     resources :taxons do
-
-
       resources :taxon_images
-
     end
-
 
   end
 
