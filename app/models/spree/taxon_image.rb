@@ -1,5 +1,6 @@
 
 class Spree::TaxonImage < ActiveRecord::Base
+  acts_as_list
 
   belongs_to :taxon, class_name: "Spree::Taxon"
 
@@ -12,5 +13,7 @@ class Spree::TaxonImage < ActiveRecord::Base
   validates_attachment :attachment,
                        :presence => true,
                        :content_type => { :content_type => %w(image/jpeg image/jpg image/png image/gif) }
+
+
 
 end

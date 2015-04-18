@@ -3,7 +3,12 @@ Spree::Core::Engine.add_routes do
 
 
     resources :taxons do
-      resources :taxon_images
+      resources :taxon_images do
+        collection do
+          post :update_positions
+        end
+      end
+
     end
 
   end
