@@ -1,7 +1,6 @@
 class AddProductIdLinkUrlPublishedContrastToSpreeTaxonImages < ActiveRecord::Migration
   def change
     add_column :spree_taxon_images, :name, :string
-    add_column :spree_taxon_images, :body, :string
     add_column :spree_taxon_images, :super_text, :string
     add_column :spree_taxon_images, :button_name, :string
     add_column :spree_taxon_images, :product_id, :integer

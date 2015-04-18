@@ -1,14 +1,92 @@
-<div data-hook="admin_image_form_fields" class="row">
-  <%= f.field_container :icon, class: ['form-group'] do %>
-      <%= f.label :attachment, Spree.t(:filename) %>
-      <%= f.file_field :attachment %>
-  <% end %>
-  <br/>
-  <%= f.field_container :description, class: ['form-group'] do %>
-      <%= f.label :alt, Spree.t(:alt_text) %>
-      <%= f.text_area :alt, :rows => 4, :class => 'form-control' %>
-  <% end %>
+<div class="row">
+
+
+  <div class="col-md-2">
+    <%= f.field_container :attachment, class: ['form-group'] do %>
+        <%= f.label :attachment, Spree.t(:filename) %>
+        <%= f.file_field :attachment %>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.field_container :position do %>
+        <%= f.label :position, t(:position) %>
+        <%= f.number_field :position, :class => 'fullwidth form-control' %>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+    <div class="field checkbox">
+      <label>
+        <%= f.check_box :published, class: "form-control" %>
+        <%= t(:published) %>
+      </label>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.field_container :button_name do %>
+        <%= f.label :button_name, t(:button_name) %>
+        <br>
+        <%= f.text_field :button_name, :class => 'fullwidth', class: "form-control" %>
+    <% end %>
+
+  </div>
+  <div class="col-md-4">
+    <%= f.field_container :super_text do %>
+        <%= f.label :super_text, t(:super_text) %>
+        <br>
+        <%= f.text_field :super_text, :class => 'fullwidth', class: "form-control" %>
+    <% end %>
+  </div>
+
 </div>
+<div class="row">
+  <div class="col-md-2">
+    <%= f.field_container :product_id do %>
+        <%= label_tag :product_id, t(:product) %>
+        <br>
+        <%= hidden_field_tag 'taxon_image[product_id]', f.object.product_id.to_s, :class => "product_picker fullwidth" %>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.field_container :name do %>
+        <%= f.label :name, t(:name) %>
+        <br>
+        <%= f.text_field :name, :class => 'fullwidth', :placeholder => "Leave blank to use product name", class: "form-control" %>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+    <div class="field checkbox">
+      <label>
+        <%= f.check_box :dark, class: "form-control" %>
+        <%= t(:dark) %>
+      </label>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <%= f.field_container :link_url do %>
+        <%= f.label :link_url, t(:link_url) %>
+        <br>
+        <%= f.text_field :link_url, :class => 'fullwidth', :placeholder => "Leave blank to use product url", class: "form-control" %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <%= f.field_container :description, class: ['form-group'] do %>
+        <%= f.label :alt, Spree.t(:body) %>
+        <%= f.text_area :alt, :rows => 4, :class => 'form-control' %>
+    <% end %>
+  </div>
+
+
+</div>
+
+
 <%= f.hidden_field :taxon_id, :value => @taxon.id %>
 <%= f.hidden_field :id, :value => @taxon_image.id %>
+</div>
 
