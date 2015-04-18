@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-    New Taxon Images for "<%= @taxon.permalink %>"
+   Edit Taxon Images for "<%= @taxon.permalink %>"
 <% end %>
 
 <% content_for :page_actions do %>
@@ -12,10 +12,14 @@
 
     <div class="clear"></div>
 
+
     <div class="form-actions" data-hook="buttons">
-      <%= button Spree.t('actions.create'), 'ok', 'submit', {class: 'btn-success'} %>
+      <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>
       <span class="or"><%= Spree.t(:or) %></span>
-      <%= button_link_to Spree.t('actions.cancel'), admin_taxon_taxon_images_url(@taxon.id), :icon => 'remove' %>
+      <%= button_link_to Spree.t('actions.cancel'), admin_taxon_taxon_images_url(@taxon.id), :icon => 'delete' %>
     </div>
+
+
+
 
 <% end %>

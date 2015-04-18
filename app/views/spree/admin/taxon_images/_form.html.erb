@@ -1,0 +1,14 @@
+<div data-hook="admin_image_form_fields" class="row">
+  <%= f.field_container :icon, class: ['form-group'] do %>
+      <%= f.label :attachment, Spree.t(:filename) %>
+      <%= f.file_field :attachment %>
+  <% end %>
+  <br/>
+  <%= f.field_container :description, class: ['form-group'] do %>
+      <%= f.label :alt, Spree.t(:alt_text) %>
+      <%= f.text_area :alt, :rows => 4, :class => 'form-control' %>
+  <% end %>
+</div>
+<%= f.hidden_field :taxon_id, :value => @taxon.id %>
+<%= f.hidden_field :id, :value => @taxon_image.id %>
+

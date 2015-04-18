@@ -30,6 +30,8 @@
             </td>
             <td><%= image.alt %></td>
             <td class="actions actions-2">
+              <%= link_to_edit image, url: edit_admin_taxon_taxon_image_url(@taxon.id, image), :no_text => true, :class => 'edit' %>
+              &nbsp;
               <%= link_to_delete image, {url: admin_taxon_taxon_image_url(@taxon, image), no_text: true} %>
             </td>
           </tr>
