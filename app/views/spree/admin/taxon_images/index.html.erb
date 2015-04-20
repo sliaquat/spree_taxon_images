@@ -17,7 +17,13 @@
       <tr data-hook="images_header">
         <th><%= Spree.t(:options) %></th>
         <th ><%= Spree.t(:thumbnail) %></th>
-        <th><%= Spree.t(:alt_text) %></th>
+        <th><%= Spree.t(:name) %></th>
+        <th><%= Spree.t(:super_text) %></th>
+        <th><%= Spree.t(:body) %></th>
+        <th><%= Spree.t(:product_name) %></th>
+        <th><%= Spree.t(:button_name) %></th>
+        <th><%= Spree.t(:dark) %></th>
+        <th><%= Spree.t(:published) %></th>
         <th class="actions"></th>
       </tr>
       </thead>
@@ -31,9 +37,15 @@
               <% end %>
             </td>
             <td class="image">
-              <%= link_to image_tag(image.attachment.url(:mini), class: 'thumbnail'), image.attachment.url(:medium) %>
+              <%= link_to image_tag(image.attachment.url(:mini), class: 'thumbnail'), image.attachment.url(:original) %>
             </td>
+            <td><%= image.taxon_image_name %></td>
+            <td><%= image.super_text %></td>
             <td><%= image.alt %></td>
+            <td><%= image.product.name if image.product %></td>
+            <td><%= image.button_name %></td>
+            <td><%= image.dark ? Spree.t(:say_yes) : Spree.t(:say_no) %></td>
+            <td><%= image.published ? Spree.t(:say_yes) : Spree.t(:say_no) %></td>
             <td class="actions actions-2">
               <%= link_to_edit image, url: edit_admin_taxon_taxon_image_url(@taxon.id, image), :no_text => true, :class => 'edit' %>
               &nbsp;

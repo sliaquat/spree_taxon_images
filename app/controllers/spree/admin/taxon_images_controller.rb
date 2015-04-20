@@ -50,7 +50,7 @@ class Spree::Admin::TaxonImagesController < Spree::Admin::ResourceController
   private
 
   def taxon_image
-    params.require(:taxon_image).permit(:attachment, :alt, :taxon_id, :id, :name, :super_text, :button_name, :link_url, :position, :product_id)
+    params.require(:taxon_image).permit(:attachment, :alt, :taxon_id, :id, :name, :super_text, :button_name, :link_url, :position, :product_id, :dark, :published)
   end
 
 end
