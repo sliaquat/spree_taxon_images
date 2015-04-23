@@ -1,5 +1,14 @@
 <div class="row">
 
+  <% if !taxon_image.attachment.blank? %>
+      <div class="col-md-2" id="thumbnail">
+        <%= f.field_container :thumbnail, class: ['form-group'] do %>
+            <%= f.label :thumbnail, Spree.t(:thumbnail) %>
+            <%= link_to image_tag(taxon_image.attachment.url(:small)), taxon_image.attachment.url(:original) %>
+        <% end %>
+      </div>
+  <% end %>
+
 
   <div class="col-md-2">
     <%= f.field_container :attachment, class: ['form-group'] do %>
@@ -32,7 +41,7 @@
     <% end %>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <%= f.field_container :super_text do %>
         <%= f.label :super_text, t(:super_text) %>
         <br>
